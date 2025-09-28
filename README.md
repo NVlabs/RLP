@@ -1,47 +1,70 @@
 # RLP: Reinforcement Learning **Pre‑training** 
+
+[![Star on GitHub](https://img.shields.io/github/stars/NVlabs/RLP.svg?style=social)](https://github.com/NVlabs/RLP/stargazers)
+
 _A verifier‑free, information‑gain objective that teaches models to “think before predicting” during pre‑training._
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv-TBD)](#paper)
 
+[Ali Hatamizadeh](https://research.nvidia.com/person/ali-hatamizadeh),
+[Syeda Nahida Akter](https://snat1505027.github.io/),
+[Shrimai Prabhumoye](https://shrimai.github.io/),
+[Jan Kautz](https://jankautz.com/),
+[Mostofa Patwary](https://sites.google.com/view/mostofa-patwary),
+[Mohammad Shoeybi](https://developer.nvidia.com/blog/author/mshoeybi/),
+[Bryan Catanzaro](https://developer.nvidia.com/blog/author/bcatanzaro/),
+[Yejin Choi](https://yejinc.github.io/).
+
+
 **Teach models to think *during* pretraining, not just after.**
 
+<img width="1829" height="433" alt="framework" src="https://github.com/user-attachments/assets/db9bec5f-0912-464f-accb-f27e4967983e" />
 
 > We introduce **RLP (Reinforcement Learning Pre‑training)**: treat chain‑of‑thought (CoT) as an *action* taken before next‑token prediction, and reward it by the **information gain** it provides on the observed next token. This yields a **verifier‑free, dense** reward that can be applied to ordinary pre‑training text. On **Qwen3‑1.7B‑Base**, RLP improves the overall math+science average by **≈ +19%** over the base model and **≈ +17%** over compute‑matched continuous pre‑training; after identical post‑training the gains **compound**. On a **12B hybrid Mamba‑Transformer (NeMo‑12B)**, the overall average rises from **42.81 → 61.32** (+18.51 points), with large science reasoning gains.
 
-## RLP at a glance
+## Method at a glance
 
 **Idea.** Before predicting token $x_t$, sample a short **thought** $c_t$ (CoT) from the model. Then score the true next token twice:
 
-* **Reasoned scorer:** $\log p_\theta\!\big(x_t \,\big|\, x_{<t}, c_t\big)$
-* **No-think baseline (EMA teacher):** $\log \bar p_\phi\!\big(x_t \,\big|\, x_{<t}\big)$
+* **Reasoned scorer:** $`\log p_\theta(x_t \mid x_{<t}, c_t)`$
+* **No‑think baseline (EMA teacher):** $`\log \overline{p}_{\phi}(x_t \mid x_{<t})`$
 
-**Reward (information gain):**
 
-$$
-r(c_t) \;=\; \log p_\theta(x_t \mid x_{<t}, c_t)\;-\;\log \bar p_\phi(x_t \mid x_{<t})
-$$
+**Reward (information gain):** $`r(c_t) = \log p_\theta(x_t \mid x_{<t}, c_t) - \log \overline{p}_{\phi}(x_t \mid x_{<t})`$
 
-This is **dense** (per token), **verifier-free**, and aligned with pre-training data.
+This is **dense** (per token), **verifier‑free**, and aligned with pre‑training data.
 
 **Optimization.**
 
-* Sample **$G$** thoughts per position (group-relative advantages reduce variance).
-* Update **only the thought tokens** via a clipped surrogate (behavior snapshot; per-token importance ratios).
-* Maintain a **slowly updated EMA** teacher as the no-think counterfactual.
+* Sample **$G$** thoughts per position (group‑relative advantages reduce variance).
+* Update **only the thought tokens** via a clipped surrogate (behavior snapshot; per‑token importance ratios).
+* Maintain a **slowly updated EMA** teacher as the no‑think counterfactual.
 
 **Why it helps.**
 
 * Rewards thoughts **in proportion to predictive utility** (not verbosity).
-* Provides **position-wise credit** at every token—no external verifiers or entropy filters.
-* Interleaves naturally with standard pre-training data.
+* Provides **position‑wise credit** at every token—no external verifiers or entropy filters.
+* Interleaves naturally with standard pre‑training data.
 
 ---
 
 ## Next token prediction Comparison 
 
+<p align="center">
+<img src="https://github.com/user-attachments/assets/a57a0b88-6687-4f0d-9cf0-bd83dd56eb49" width=62% height=62% 
+class="center">
+</p>
+
+
 ## Key results
 
 ### 🔹 Qwen3 1.7B Base
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/77a75776-8cfc-4e45-ad53-1900e4ea8fa9" width=62% height=62% 
+class="center">
+</p>
+
 
 * **Setup:**
 
@@ -69,6 +92,11 @@ This is **dense** (per token), **verifier-free**, and aligned with pre-training 
 
 ### 🔹 Nemotron Nano 12B v2 Base
 
+<p align="center">
+<img src="https://github.com/user-attachments/assets/8f343919-0e9a-4a11-9250-a8cdb99321d8" width=62% height=62% 
+class="center">
+</p>
+
 * **Setup:**
 
   * We compare an intermediate checkpoint of **Nemotron-Nano-12B-v2-Base** trained on **19.8T tokens** with **RLP applied for only 250M tokens**.
@@ -88,3 +116,29 @@ This is **dense** (per token), **verifier-free**, and aligned with pre-training 
 
   * The benefits of **RLP not only persist but amplify** at larger model scales.
   * RLP generalizes effectively across architectures, yielding robust reasoning improvements even in hybrid models like Nemotron.
+
+
+## Citation
+
+If you find MambaVision to be useful for your work, please consider citing our paper: 
+
+```
+@article{hatamizadeh2025rlp,
+  title={Gated delta networks: Improving mamba2 with delta rule},
+  author={Hatamizadeh, Ali and Akter,  Syeda Nahida and Prabhumoye, Shrimai and Kautz, Jan and Patwary, Mostofa and Shoeybi,  Mohammad and Catanzaro, Bryan and Choi, Yejin},
+  journal={arXiv preprint arXiv:2412.06464},
+  year={2025}
+}
+```
+
+## Star History
+
+[![Stargazers repo roster for @NVlabs/RLP](https://bytecrank.com/nastyox/reporoster/php/stargazersSVG.php?user=NVlabs&repo=RLP)](https://github.com/NVlabs/RLP/stargazers)
+
+[![Star History Chart](https://api.star-history.com/svg?repos=NVlabs/RLP&type=Date)](https://star-history.com/#NVlabs/RLP&Date)
+
+
+## Licenses
+
+Copyright © 2025, NVIDIA Corporation. All rights reserved.
+ 
