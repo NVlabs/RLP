@@ -21,30 +21,6 @@ _A verifier‑free, information‑gain objective that teaches models to “think
 
 > We introduce **RLP (Reinforcement Learning Pre‑training)**: treat chain‑of‑thought (CoT) as an *action* taken before next‑token prediction, and reward it by the **information gain** it provides on the observed next token. This yields a **verifier‑free, dense** reward that can be applied to ordinary pre‑training text. On **Qwen3‑1.7B‑Base**, RLP improves the overall math+science average by **≈ +19%** over the base model and **≈ +17%** over compute‑matched continuous pre‑training; after identical post‑training the gains **compound**. On a **12B hybrid Mamba‑Transformer (NeMo‑12B)**, the overall average rises from **42.81 → 61.32** (+18.51 points), with large science reasoning gains.
 
-## Method at a glance
-
-**Idea.** Before predicting token $x_t$, sample a short **thought** $c_t$ (CoT) from the model. Then score the true next token twice:
-
-* **Reasoned scorer:** $`\log p_\theta(x_t \mid x_{<t}, c_t)`$
-* **No‑think baseline (EMA teacher):** $`\log \overline{p}_{\phi}(x_t \mid x_{<t})`$
-
-
-**Reward (information gain):** $`r(c_t) = \log p_\theta(x_t \mid x_{<t}, c_t) - \log \overline{p}_{\phi}(x_t \mid x_{<t})`$
-
-This is **dense** (per token), **verifier‑free**, and aligned with pre‑training data.
-
-**Optimization.**
-
-* Sample **$G$** thoughts per position (group‑relative advantages reduce variance).
-* Update **only the thought tokens** via a clipped surrogate (behavior snapshot; per‑token importance ratios).
-* Maintain a **slowly updated EMA** teacher as the no‑think counterfactual.
-
-**Why it helps.**
-
-* Rewards thoughts **in proportion to predictive utility** (not verbosity).
-* Provides **position‑wise credit** at every token—no external verifiers or entropy filters.
-* Interleaves naturally with standard pre‑training data.
-
 ---
 
 ## Next token prediction Comparison 
