@@ -23,7 +23,7 @@ _A verifier‑free, information‑gain objective that teaches models to “think
 
 ---
 
-## Next token prediction Comparison 
+## Next token prediction comparison 
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/a57a0b88-6687-4f0d-9cf0-bd83dd56eb49" width=62% height=62% 
