@@ -15,7 +15,6 @@ _A verifier‑free, information‑gain objective that teaches models to “think
 [Bryan Catanzaro](https://developer.nvidia.com/blog/author/bcatanzaro/),
 [Yejin Choi](https://yejinc.github.io/).
 
-
 **Teach models to think *during* pretraining, not just after.**
 
 <img width="1829" height="433" alt="framework" src="https://github.com/user-attachments/assets/db9bec5f-0912-464f-accb-f27e4967983e" />
