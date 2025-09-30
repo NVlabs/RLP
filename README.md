@@ -6,14 +6,16 @@ _A verifier‑free, information‑gain objective that teaches models to “think
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv-TBD)](#paper)
 
-[Ali Hatamizadeh^*](https://research.nvidia.com/person/ali-hatamizadeh),
-[Syeda Nahida Akter^*](https://snat1505027.github.io/),
-[Shrimai Prabhumoye^*](https://shrimai.github.io/),
+[Ali Hatamizadeh[^1]](https://research.nvidia.com/person/ali-hatamizadeh),
+[Syeda Nahida Akter[^1]](https://snat1505027.github.io/),
+[Shrimai Prabhumoye[^1]](https://shrimai.github.io/),
 [Jan Kautz](https://jankautz.com/),
 [Mostofa Patwary](https://sites.google.com/view/mostofa-patwary),
 [Mohammad Shoeybi](https://developer.nvidia.com/blog/author/mshoeybi/),
 [Bryan Catanzaro](https://developer.nvidia.com/blog/author/bcatanzaro/),
 [Yejin Choi](https://yejinc.github.io/).
+
+[^1]: Equal Contribution
 
 **Teach models to think *during* pretraining, not just after.**
 
