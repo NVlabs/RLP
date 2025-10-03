@@ -1,4 +1,4 @@
-# RLP: Reinforcement as a Pretraining Objective** 
+# RLP: Reinforcement as a Pretraining Objective 
 
 [![Star on GitHub](https://img.shields.io/github/stars/NVlabs/RLP.svg?style=social)](https://github.com/NVlabs/RLP/stargazers)
 
