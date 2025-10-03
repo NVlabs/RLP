@@ -4,7 +4,7 @@
 
 _A verifier‑free, information‑gain objective that teaches models to “think before predicting” during pre‑training._
 
-[![Paper](https://img.shields.io/badge/Paper-arXiv-2510.01265-b31b1b.svg)](https://arxiv.org/abs/2510.01265)
+[![Paper](https://img.shields.io/badge/Paper-arXiv-TBD)](https://arxiv.org/abs/2510.01265)
 
 [Ali Hatamizadeh[^1]](https://research.nvidia.com/person/ali-hatamizadeh),
 [Syeda Nahida Akter[^1]](https://snat1505027.github.io/),
