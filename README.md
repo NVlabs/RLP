@@ -1,6 +1,9 @@
-# RLP: Reinforcement Learning **Pre‑training** 
+# RLP: Reinforcement as a Pretraining Objective** 
 
 [![Star on GitHub](https://img.shields.io/github/stars/NVlabs/RLP.svg?style=social)](https://github.com/NVlabs/RLP/stargazers)
+
+Official repository of [**RLP: Reinforcement as a Pretraining Objective**](https://arxiv.org/abs/2510.01265). 
+
 
 _A verifier‑free, information‑gain objective that teaches models to “think before predicting” during pre‑training._
 
