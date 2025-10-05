@@ -104,8 +104,8 @@ If you find RLP to be useful for your work, please consider citing our paper:
 
 ```
 @article{hatamizadeh2025rlp,
-  title={RLP: Reinforcement Learning Pre‑training},
-  author={Hatamizadeh, Ali and Akter,  Syeda Nahida and Prabhumoye, Shrimai and Kautz, Jan and Patwary, Mostofa and Shoeybi,  Mohammad and Catanzaro, Bryan and Choi, Yejin},
+  title={RLP: Reinforcement as a Pretraining Objective},
+  author={Hatamizadeh, Ali and Akter, Syeda Nahida and Prabhumoye, Shrimai and Kautz, Jan and Patwary, Mostofa and Shoeybi, Mohammad and Catanzaro, Bryan and Choi, Yejin},
   journal={arXiv preprint arXiv:2510.01265},
   year={2025}
 }
