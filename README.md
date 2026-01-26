@@ -20,6 +20,12 @@ _A verifier‑free, information‑gain objective that teaches models to “think
 
 [^1]: Equal Contribution
 
+## 💥 News 💥
+- **[01.26.2026]** Code will be released soon ! 
+- **[01.26.2026]** RLP has been accepted to ICLR 2026 🎉 ! 
+
+---
+
 **Teach models to think *during* pretraining, not just after.**
 
 <img width="1829" height="433" alt="framework" src="https://github.com/user-attachments/assets/db9bec5f-0912-464f-accb-f27e4967983e" />
